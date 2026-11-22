@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 720px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    color: #2f8d46;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.input-section input,
+.filter-section input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.controls,
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.checkbox-label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#addNoteBtn {
+    background-color: #1a73e8;
+    color: white;
+}
+
+#addNoteBtn.edit-mode {
+    background-color: #2f8d46;
+}
+
+#cancelEditBtn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.note-card {
+    border: 1px solid #ccc;
+    padding: 14px;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.2s;
+}
+
+.note-card:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.star {
+    color: #ccc;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.star.important {
+    color: #f4b400;
+}
+
+.card-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    color: #1a73e8;
+}
+
+.delete-btn {
+    color: #d9534f;
+}
+
+.note-card h3 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: #222;
+    word-break: break-word;
+}
+
+.note-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.empty-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+}

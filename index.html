@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Note Taking App</h1>
+        
+        <!-- قسم إضافة وتعديل الملاحظة -->
+        <div class="input-section">
+            <input type="text" id="noteTitle" placeholder="Note Title">
+            <input type="text" id="noteDesc" placeholder="Note Description">
+        </div>
+        
+        <div class="controls">
+            <label class="checkbox-label">
+                <input type="checkbox" id="isImportant"> Mark as Important
+            </label>
+            <div class="btn-group">
+                <button id="cancelEditBtn" class="hidden">Cancel</button>
+                <button id="addNoteBtn">Add Note</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- قسم البحث والفلترة -->
+        <div class="filter-section">
+            <input type="text" id="searchInput" placeholder="Search notes...">
+            <label class="checkbox-label">
+                <input type="checkbox" id="filterImportant"> Important Only (★)
+            </label>
+        </div>
+
+        <!-- شبكة عرض الملاحظات -->
+        <div class="notes-grid" id="notesContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
