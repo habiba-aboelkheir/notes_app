@@ -1,44 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note Taking App</title>
+    <title>VibeNotes Pro — Smart Dark Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Note Taking App</h1>
-        
-        <!-- قسم إضافة وتعديل الملاحظة -->
-        <div class="input-section">
-            <input type="text" id="noteTitle" placeholder="Note Title">
-            <input type="text" id="noteDesc" placeholder="Note Description">
-        </div>
-        
-        <div class="controls">
-            <label class="checkbox-label">
-                <input type="checkbox" id="isImportant"> Mark as Important
-            </label>
-            <div class="btn-group">
-                <button id="cancelEditBtn" class="hidden">Cancel</button>
-                <button id="addNoteBtn">Add Note</button>
+    <!-- خلفية الشبكة والإضاءة -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <div class="app-wrapper">
+        <!-- الهيدر -->
+        <header class="navbar">
+            <div class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="logo-text">
+                    <span>Vibe<strong>Notes</strong></span>
+                    <span class="pro-badge">PRO</span>
+                </div>
             </div>
-        </div>
+            <div class="nav-actions">
+                <span class="notes-counter" id="notesCount">0 Notes</span>
+                <button id="themeToggle" class="icon-circle-btn" title="Switch Theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </header>
 
-        <hr>
+        <!-- صندوق إنشاء / تعديل الملاحظة -->
+        <section class="composer-card">
+            <div class="composer-header-row">
+                <input type="text" id="noteTitle" placeholder="Note title..." autocomplete="off">
+                <span class="shortcut-hint">Ctrl + Enter to save</span>
+            </div>
+            <textarea id="noteDesc" rows="3" placeholder="Capture an idea, code snippet, or task..."></textarea>
+            
+            <div class="composer-footer">
+                <div class="composer-tools">
+                    <!-- اختيار لون الإطار/البطاقة -->
+                    <div class="color-picker" id="colorPicker">
+                        <span class="color-dot active" data-color="default" title="Obsidian"></span>
+                        <span class="color-dot" data-color="purple" style="background: #a855f7;" title="Neon Purple"></span>
+                        <span class="color-dot" data-color="blue" style="background: #38bdf8;" title="Electric Blue"></span>
+                        <span class="color-dot" data-color="green" style="background: #10b981;" title="Emerald"></span>
+                        <span class="color-dot" data-color="amber" style="background: #f59e0b;" title="Amber"></span>
+                        <span class="color-dot" data-color="rose" style="background: #f43f5e;" title="Crimson"></span>
+                    </div>
 
-        <!-- قسم البحث والفلترة -->
-        <div class="filter-section">
-            <input type="text" id="searchInput" placeholder="Search notes...">
-            <label class="checkbox-label">
-                <input type="checkbox" id="filterImportant"> Important Only (★)
-            </label>
-        </div>
+                    <label class="toggle-chip">
+                        <input type="checkbox" id="isImportant">
+                        <span class="chip-label"><i class="fa-solid fa-star"></i> Important</span>
+                    </label>
+
+                    <label class="toggle-chip">
+                        <input type="checkbox" id="isPinned">
+                        <span class="chip-label"><i class="fa-solid fa-thumbtack"></i> Pin</span>
+                    </label>
+                </div>
+
+                <div class="composer-right">
+                    <span class="char-counter" id="charCounter">0 chars</span>
+                    <div class="action-buttons">
+                        <button id="cancelEditBtn" class="btn btn-ghost hidden">Cancel</button>
+                        <button id="addNoteBtn" class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i> <span>Add Note</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- شريط البحث والفلترة -->
+        <section class="toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search notes...">
+                <kbd class="kbd-hint">/</kbd>
+            </div>
+            
+            <div class="filter-pills">
+                <button class="pill active" data-filter="all">All</button>
+                <button class="pill" data-filter="pinned"><i class="fa-solid fa-thumbtack"></i> Pinned</button>
+                <button class="pill" data-filter="important"><i class="fa-solid fa-star"></i> Starred</button>
+            </div>
+        </section>
 
         <!-- شبكة عرض الملاحظات -->
-        <div class="notes-grid" id="notesContainer"></div>
+        <main class="notes-grid" id="notesContainer"></main>
     </div>
+
+    <!-- حاوية الإشعارات الذكية -->
+    <div id="toastContainer" class="toast-container"></div>
 
     <script src="script.js"></script>
 </body>
